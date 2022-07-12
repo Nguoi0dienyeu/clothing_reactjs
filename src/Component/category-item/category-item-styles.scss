@@ -1,0 +1,45 @@
+// div 2
+.categori-container {
+  min-width: 30%;
+  display: flex;
+  flex: 1 1 auto;
+  height: 240px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  margin: 0 7px 7px;
+  &:hover {
+    cursor: pointer;
+  }
+  & .categori-background {
+    transform: scale(1.2);
+    transition: transform 6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+// div3
+.categori-body-container {
+  border: 2px solid;
+  min-width: 30%;
+  height: 50%;
+  text-align: center;
+  opacity: 0.9;
+  &:hover h2 {
+    transition: 6s cubic-bezier(0.23, 1, 0.32, 1);
+    color: rgb(62, 60, 60);
+    opacity: 0.8;
+  }
+  h2 {
+    color: rgb(123, 119, 119);
+  }
+  p {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Verdana, sans-serif;
+    font-size: 14px;
+    color: rgb(174, 165, 165);
+  }
+  &:hover p {
+    color: orange;
+    transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}

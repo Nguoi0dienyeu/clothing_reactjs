@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import DirectoryComponent from "./Directory/directory-component";
+import "./Directory/directory-styles.scss";
+const App = () => {
+  const categories = [
+    {
+      id: 1,
+      title: "Hats",
+      subtitle: "Shop Now",
+      imgUrl:
+        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
+    },
+    {
+      id: 2,
+      title: "Womens",
+      subtitle: "Shop Now",
+      imgUrl:
+        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
+    },
+    {
+      id: 3,
+      title: "Mens",
+      subtitle: "Shop Now",
+      imgUrl:
+        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
+    },
+    {
+      id: 4,
+      title: "Summer",
+      subtitle: "Shop Now",
+      imgUrl:
+        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
+    },
+    {
+      id: 5,
+      title: "Jacket",
+      subtitle: "Shop Now",
+      imgUrl:
+        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
+    },
+  ];
+  return <DirectoryComponent categories={categories} />;
+};
 
 export default App;
