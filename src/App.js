@@ -1,44 +1,18 @@
-import DirectoryComponent from "./Directory/directory-component";
-import "./Directory/directory-styles.scss";
+import { Route, Routes } from "react-router-dom";
+import Home from "./routes/home/home.component";
+import Navigation from "./routes/navigation/nav.component";
 const App = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "Hats",
-      subtitle: "Shop Now",
-      imgUrl:
-        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
-    },
-    {
-      id: 2,
-      title: "Womens",
-      subtitle: "Shop Now",
-      imgUrl:
-        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
-    },
-    {
-      id: 3,
-      title: "Mens",
-      subtitle: "Shop Now",
-      imgUrl:
-        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
-    },
-    {
-      id: 4,
-      title: "Summer",
-      subtitle: "Shop Now",
-      imgUrl:
-        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
-    },
-    {
-      id: 5,
-      title: "Jacket",
-      subtitle: "Shop Now",
-      imgUrl:
-        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
-    },
-  ];
-  return <DirectoryComponent categories={categories} />;
-};
+  const Shop = () => {
+    return <h2>I am the shop page</h2>;
+  };
 
+  return (
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+      </Route>
+    </Routes>
+  );
+};
 export default App;
