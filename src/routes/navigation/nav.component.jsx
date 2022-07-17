@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Fragment } from "react";
 import "./nav.styles.scss";
 const Navigation = () => {
@@ -7,22 +7,30 @@ const Navigation = () => {
   return (
     <Fragment>
       <div className="navigation-bar">
-        <div
-          className="logo"
-          style={{
-            backgroundImage: `url(${homePage})`,
-          }}
-        ></div>
+        <Link className="logo" to="/">
+          <div
+            className="logo"
+            style={{
+              backgroundImage: `url(${homePage})`,
+            }}
+          ></div>
+        </Link>
         <div className="navigation-menu">
           <ul>
             <li>
-              <a href="1">Shop</a>
+              <Link className="nav-link" to="/shop">
+                Shop
+              </Link>
             </li>
             <li>
-              <a href="1">Contact</a>
+              <Link className="nav-link" to="/contact">
+                Contact
+              </Link>
             </li>
             <li>
-              <a href="1">Wallet</a>
+              <Link className="nav-link" to="/signin">
+                sign in
+              </Link>
             </li>
             <li>
               <div

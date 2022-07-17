@@ -25,9 +25,10 @@
     display: inline-block;
     padding: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    a {
+    .nav-link {
       text-decoration: none;
       color: rgb(103, 99, 99);
+      text-transform: uppercase;
     }
     &:hover a {
       color: orange;
