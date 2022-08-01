@@ -1,82 +1,39 @@
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { getRedirectResult } from "firebase/auth";
+import React, { Fragment, useEffect } from "react";
+import SignUpForm from "../../sign-up-form/sign-up-form.component";
 import {
-  signInWithGooglePopup,
+  auth,
   createUserDocumentFromAuth,
+  signInWithGooglePopup,
 } from "../../utils/Firebase/firebase.utils";
-import React, { Fragment } from "react";
 import "./login.styles.scss";
 
 const SignIn = () => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+  useEffect(() => {
+    const asyncFn = async () => {
+      const respone = await getRedirectResult(auth);
+      if (respone) {
+        const userDocRef = createUserDocumentFromAuth(respone.user);
+      }
+    };
+    asyncFn();
+  }, []);
+
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     const userDocRef = createUserDocumentFromAuth(user);
+    console.log("userDocRef", userDocRef);
   };
+
   return (
     <Fragment>
       <div className="form-container">
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
-          <Form.Item
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: "Please input your Username!",
-              },
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your Password!",
-              },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item>
-            ser{" "}
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-            <a className="login-form-forgot" href="/">
-              Forgot password
-            </a>
-          </Form.Item>
-
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={logGoogleUser}
-              className="login-form-button"
-            >
-              Sign in with Google
-            </Button>
-            Or <a href="/">register now!</a>
-          </Form.Item>
-        </Form>
+        <div className="login-container">
+          <button className="btn-sign-in-google" onClick={logGoogleUser}>
+            <p>Sign in wit Google Popup</p>
+          </button>
+        </div>
+        <SignUpForm />
       </div>
     </Fragment>
   );
