@@ -8,7 +8,7 @@ const Home = () => {
       title: "Hats",
       subtitle: "Shop Now",
       imgUrl:
-        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
+        "https://images.asos-media.com/products/stradivarius-straight-leg-90s-jeans-with-rips-in-blue/200548990-1-blue?$n_480w$&wid=476&fit=constrain",
     },
     {
       id: 2,
