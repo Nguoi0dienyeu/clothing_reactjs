@@ -28,10 +28,11 @@ const Navigation = () => {
               </Link>
             </li>
             <li>
-              <Link className="nav-link" to="/signin">
+              <Link className="nav-link" to="/auth">
                 sign in
               </Link>
             </li>
+            <li></li>
             <li>
               <div
                 className="shoping-cart"

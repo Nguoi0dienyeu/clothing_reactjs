@@ -1,14 +1,13 @@
 import { getRedirectResult } from "firebase/auth";
 import React, { Fragment, useEffect } from "react";
-import SignUpForm from "../../sign-up-form/sign-up-form.component";
+import SignInForm from "../../sign-in-form/sign-in-form.component";
 import {
   auth,
   createUserDocumentFromAuth,
-  signInWithGooglePopup,
 } from "../../utils/Firebase/firebase.utils";
 import "./login.styles.scss";
 
-const SignIn = () => {
+const Authentication = () => {
   useEffect(() => {
     const asyncFn = async () => {
       const respone = await getRedirectResult(auth);
@@ -19,24 +18,15 @@ const SignIn = () => {
     asyncFn();
   }, []);
 
-  const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = createUserDocumentFromAuth(user);
-    console.log("userDocRef", userDocRef);
-  };
-
   return (
     <Fragment>
       <div className="form-container">
         <div className="login-container">
-          <button className="btn-sign-in-google" onClick={logGoogleUser}>
-            <p>Sign in wit Google Popup</p>
-          </button>
+          <SignInForm />
         </div>
-        <SignUpForm />
       </div>
     </Fragment>
   );
 };
 
-export default SignIn;
+export default Authentication;

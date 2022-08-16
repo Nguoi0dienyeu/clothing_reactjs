@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Áo phông",
+    "imgUrl": "",
+    "price": 50,
+    "year": 2022,
+    "location": "China"
+  },
+  {
+    "id": 2,
+    "name": "Áo polo nam",
+    "imgUrl": "",
+    "price": 59,
+    "year": 2021,
+    "location": "Viet Nam"
+  },
+  {
+    "id": 3,
+    "name": "Quần âu",
+    "imgUrl": "",
+    "price": 115,
+    "year": 2019,
+    "location": "Viet nam"
+  },
+  {
+    "id": 4,
+    "name": "Áo sơ mi",
+    "imgUrl": "",
+    "price": 300,
+    "year": 2022,
+    "location": "Quảng châu"
+  },
+  {
+    "id": 5,
+    "name": "Áo phông",
+    "imgUrl": "",
+    "price": 50,
+    "year": 2022,
+    "location": "China"
+  },
+  {
+    "id": 6,
+    "name": "Quần kaki",
+    "imgUrl": "",
+    "price": 112,
+    "year": 2022,
+    "location": "Viet Nam"
+  },
+  {
+    "id": 7,
+    "name": "Quần thể thao",
+    "imgUrl": "",
+    "price": 212,
+    "year": 2022,
+    "location": "China"
+  }
+]

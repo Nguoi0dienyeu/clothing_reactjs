@@ -1,11 +1,10 @@
 import { Fragment, useState } from "react";
+import FormInput from "../Form-Component/form-input.component";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../utils/Firebase/firebase.utils";
 import "./sign-up-form.style.scss";
-import FormInput from "../Form-Component/form-input.component";
-import { Divider } from "antd";
 const getFormFieldValues = {
   displayName: "",
   email: "",
@@ -23,6 +22,11 @@ const SignUpForm = () => {
       setFormFieldValues(getFormFieldValues);
     };
     e.preventDefault();
+    if (getFormFieldValues === null) {
+      alert("Do not create acoount when you input value");
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert("Do not match password");
       return;
