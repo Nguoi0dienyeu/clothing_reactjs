@@ -3,30 +3,37 @@ import FormInput from "../Form-Component/form-input.component";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from "../utils/Firebase/firebase.utils";
+} from "../../utils/Firebase/firebase.utils";
+import { UserContext } from "../../Context/user.context";
 import "./sign-up-form.style.scss";
-const getFormFieldValues = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
+import { useContext } from "react";
+
+// const getFormFieldValues = {
+//   displayName: "",
+//   email: "",
+//   password: "",
+//   confirmPassword: "",
+// };
 const SignUpForm = () => {
-  const [formFieldValues, setFormFieldValues] = useState(getFormFieldValues);
-  const { displayName, email, password, confirmPassword } = formFieldValues;
-  console.log("formfield", formFieldValues);
+  const [displayName, setDisplayName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, settPassword] = useState("");
+  const [confirmPassword, setConFirmPassword] = useState("");
+  // const [formFieldValues, setFormFieldValues] = useState(getFormFieldValues);
+  // const { displayName, email, password, confirmPassword } = formFieldValues;
+  const { setUserCurrent } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     // firebasedb.auth().createUserWithEmailAndPassword(email,password).catch((error) =>{
-    const resetForm = () => {
-      setFormFieldValues(getFormFieldValues);
-    };
-    e.preventDefault();
-    if (getFormFieldValues === null) {
-      alert("Do not create acoount when you input value");
-      return;
-    }
+    // const resetForm = () => {
+    //   setFormFieldValues(getFormFieldValues);
+    // };
+    // e.preventDefault();
 
+    // if (getFormFieldValues === "") {
+    //   alert("Do not create acoount when you input value");
+    //   return;
+    // }
     if (password !== confirmPassword) {
       alert("Do not match password");
       return;
@@ -34,9 +41,9 @@ const SignUpForm = () => {
 
     try {
       const { user } = createAuthUserWithEmailAndPassword(email, password);
-      resetForm();
       await createUserDocumentFromAuth(user, { displayName });
       alert("Succes Create Account", user);
+      setUserCurrent(user);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         console.log(" cannot create user, email already in use");
@@ -44,12 +51,27 @@ const SignUpForm = () => {
         console.log(error);
       }
     }
-    // })
   };
 
-  const handlerChange = (e) => {
-    const { name, value } = e.target;
-    setFormFieldValues({ ...formFieldValues, [name]: value });
+  const handlerChangeName = (e) => {
+    // const { name, value } = e.target;
+    // setFormFieldValues({ ...formFieldValues, [name]: value });
+    setDisplayName(e.target.value);
+  };
+  const handlerChangeMail = (e) => {
+    // const { name, value } = e.target;
+    // setFormFieldValues({ ...formFieldValues, [name]: value });
+    setEmail(e.target.value);
+  };
+  const handlerChangePassword = (e) => {
+    // const { name, value } = e.target;
+    // setFormFieldValues({ ...formFieldValues, [name]: value });
+    settPassword(e.target.value);
+  };
+  const handlerChangeConfirmPassword = (e) => {
+    // const { name, value } = e.target;
+    // setFormFieldValues({ ...formFieldValues, [name]: value });
+    setConFirmPassword(e.target.value);
   };
   return (
     <Fragment>
@@ -62,7 +84,7 @@ const SignUpForm = () => {
             <FormInput
               label={"UserName"}
               type="text"
-              onChange={handlerChange}
+              onChange={handlerChangeName}
               name="displayName"
               value={displayName}
             />
@@ -71,7 +93,7 @@ const SignUpForm = () => {
             <FormInput
               label={"Email"}
               type="email"
-              onChange={handlerChange}
+              onChange={handlerChangeMail}
               name="email"
               value={email}
             />
@@ -80,7 +102,7 @@ const SignUpForm = () => {
             <FormInput
               label={"Password"}
               type="password"
-              onChange={handlerChange}
+              onChange={handlerChangePassword}
               name="password"
               value={password}
             />
@@ -89,7 +111,7 @@ const SignUpForm = () => {
             <FormInput
               label={"Confirm Password"}
               type="password"
-              onChange={handlerChange}
+              onChange={handlerChangeConfirmPassword}
               name="confirmPassword"
               value={confirmPassword}
             />

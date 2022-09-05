@@ -1,0 +1,45 @@
+.container-shop-page {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 60px 60px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  .container-products-card {
+    width: 23.33%;
+    border: 1px solid orange;
+    margin: 10px;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px 0 10px;
+      .name-card {
+        color: red;
+      }
+    }
+    button {
+      border: none;
+      line-height: 20px;
+      width: 50%;
+      background: rgb(45, 43, 43);
+      cursor: pointer;
+    }
+    .button-card {
+      position: absolute;
+      top: 75%;
+      left: 25%;
+      .button-text {
+        color: rgb(243, 243, 243);
+        &:hover {
+          color: rgb(230, 212, 19);
+          transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+      }
+    }
+  }
+}

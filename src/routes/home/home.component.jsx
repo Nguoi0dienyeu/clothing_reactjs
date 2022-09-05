@@ -1,5 +1,5 @@
-import DirectoryComponent from "../../Directory/directory-component";
-import "../../Directory/directory-styles.scss";
+import DirectoryComponent from "../../Component/Directory/directory-component";
+import "../../Component/Directory/directory-styles.scss";
 import { Outlet } from "react-router-dom";
 const Home = () => {
   const categories = [
@@ -8,7 +8,7 @@ const Home = () => {
       title: "Hats",
       subtitle: "Shop Now",
       imgUrl:
-        "https://images.asos-media.com/products/stradivarius-straight-leg-90s-jeans-with-rips-in-blue/200548990-1-blue?$n_480w$&wid=476&fit=constrain",
+        "https://media.gq.com/photos/61f1b40342209a2de49b86e0/master/pass/012622-winter-jackets-refresh-lead.jpg",
     },
     {
       id: 2,

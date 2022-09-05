@@ -1,27 +1,44 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../Form-Component/form-input.component";
 import {
   createUserDocumentFromAuth,
-  signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
-} from "../utils/Firebase/firebase.utils";
+  signInWithGooglePopup,
+} from "../../utils/Firebase/firebase.utils";
 import "./sign-in-form.style.scss";
+import { UserContext } from "../../Context/user.context";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { setUserCurrent } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // try {
+    //   const { user } = await signInAuthUserWithEmailAndPassword(
+    //     email,
+    //     password
+    //   );
+    //   navigate("/home");
+    //   setUserCurrent(" e.target.value();", e.target.value);
+    //   console.log("user", user);
+    // } catch (err) {
+    //   setError(error.message);
+    // }
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
-      navigate("/home");
-    } catch (error) {
-      setError(error.message);
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      setUserCurrent(user);
+      console.log("user", user);
+    } catch (err) {
+      setError();
+      console.log("err", error);
     }
   };
 

@@ -1,6 +1,6 @@
 import { getRedirectResult } from "firebase/auth";
 import React, { Fragment, useEffect } from "react";
-import SignInForm from "../../sign-in-form/sign-in-form.component";
+import SignInForm from "../../Component/sign-in-form/sign-in-form.component";
 import {
   auth,
   createUserDocumentFromAuth,
