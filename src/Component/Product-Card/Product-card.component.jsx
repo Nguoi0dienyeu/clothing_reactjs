@@ -1,9 +1,16 @@
 import { Button } from "antd";
 import { Fragment } from "react";
+import { useContext } from "react";
+import { CartConext } from "../../Context/cart.context";
 import "./Product-Card.style.scss";
 
 const ProductCard = ({ product }) => {
   const { name, price, imgUrl } = product;
+  const { addItemToCart } = useContext(CartConext);
+
+  const addProducToCart = () => {
+    addItemToCart(product);
+  };
   return (
     <Fragment>
       <div className="container-products-card">
@@ -17,7 +24,9 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
         <Button htmlType="submit" type="primary" className="button-card">
-          <p className="button-text">Add to card</p>
+          <p className="button-text" onClick={addProducToCart}>
+            Add to card
+          </p>
         </Button>
       </div>
     </Fragment>
