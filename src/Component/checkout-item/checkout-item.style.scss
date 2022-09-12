@@ -1,0 +1,24 @@
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid;
+  .checkout-item-image {
+    max-width: 100px;
+    img {
+      width: 100%;
+      padding: 10px 10px 10px 0;
+    }
+  }
+  .remove-button {
+    font-size: 20px;
+    margin-right: 20px;
+    &:hover {
+      cursor: pointer;
+      color: orange;
+    }
+  }
+}
+.checkout-item span {
+  margin-right: 50px;
+}

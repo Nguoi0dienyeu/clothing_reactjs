@@ -5,6 +5,7 @@ import Navigation from "./routes/Navigation/nav.component";
 import ResetFormEmailPassword from "./reset-email.component/Reset.component";
 import SignUpForm from "./Component/sign-up-form/sign-up-form.component";
 import ShopPage from "./routes/shop/shop.component";
+import CheckOut from "./routes/checkout/checkout";
 const App = () => {
   return (
     <Routes>
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="sign-up" element={<SignUpForm />} />
         <Route path="reset" element={<ResetFormEmailPassword />} />
         <Route path="auth" element={<Authentication />} />
+        <Route path="checkout" element={<CheckOut />} />
       </Route>
     </Routes>
   );
