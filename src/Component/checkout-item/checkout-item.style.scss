@@ -18,6 +18,21 @@
       color: orange;
     }
   }
+  span.quantity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .arrow-value {
+      padding: 5px;
+      color: red;
+    }
+    label {
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
 }
 .checkout-item span {
   margin-right: 50px;

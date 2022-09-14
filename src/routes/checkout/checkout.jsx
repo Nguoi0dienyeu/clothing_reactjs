@@ -7,7 +7,7 @@ import "./checkout.style.scss";
 const CheckOut = () => {
   const [loading, setLoading] = useState(false);
 
-  const { cartItems } = useContext(CartConext);
+  const { cartItems, total } = useContext(CartConext);
   useEffect(() => {
     if (cartItems.length > 0) {
       setLoading(true);
@@ -37,7 +37,7 @@ const CheckOut = () => {
           <CheckOutItem key={cartItem.id} cartItem={cartItem} />
         ))}
         <div className="footer">
-          <span className="header-tabs-total">Total: 0</span>
+          <span className="header-tabs-total">Total: ${total}</span>
         </div>
       </div>
     </Spin>
