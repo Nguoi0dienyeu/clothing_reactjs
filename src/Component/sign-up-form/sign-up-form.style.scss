@@ -1,0 +1,17 @@
+.card {
+  width: 30%;
+  margin: auto;
+  .card-body-container.card-body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    h2 {
+      text-align: center;
+    }
+    .button-submit {
+      padding-top: 20px;
+      button.btn.btn-primary {
+        width: 100%;
+        line-height: 30px;
+      }
+    }
+  }
+}

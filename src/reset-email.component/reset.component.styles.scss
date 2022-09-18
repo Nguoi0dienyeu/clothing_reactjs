@@ -1,0 +1,29 @@
+.forgot-password {
+  max-width: 1000px;
+  margin: auto;
+  .forgot-container {
+    box-shadow: 10px 10px 5px 5px #aaaaaa;
+    input {
+      padding: 0 0 0 10px;
+    }
+    input.reset-input {
+      width: 41%;
+      line-height: 40px;
+      border: 1px solid darkgray;
+      margin: 30px 30px 30px 10px;
+    }
+    button {
+      background-color: aqua;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(105, 226, 164);
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+    }
+    button.reset_button_container {
+      border: none;
+      line-height: 40px;
+      height: 40px;
+    }
+  }
+}

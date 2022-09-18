@@ -1,0 +1,40 @@
+.cart-dropdown-container {
+  border: 1px solid #070707;
+  position: absolute;
+  width: 240px;
+  height: 320px;
+  background: white;
+  top: 90px;
+  z-index: 1000;
+  left: 77%;
+  flex-direction: column;
+  display: flex;
+  padding: 17px;
+  .empty-message {
+    font-size: 18px;
+    margin: 20px auto;
+  }
+  .cart-list-items {
+    height: 260px;
+    overflow: scroll;
+  }
+  .checkout-items {
+    position: absolute;
+    bottom: 10px;
+    left: 11%;
+  }
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    width: 80%;
+    &:hover {
+      background-color: rgb(150, 104, 104);
+    }
+    p {
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+}

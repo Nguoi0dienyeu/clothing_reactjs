@@ -1,20 +1,26 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home/home.component";
-import SignIn from "./routes/Sign-In/login.component";
+import Authentication from "./routes/authenticate/authenticate.component";
 import Navigation from "./routes/Navigation/nav.component";
+import ResetFormEmailPassword from "./reset-email.component/Reset.component";
+import SignUpForm from "./Component/sign-up-form/sign-up-form.component";
+import ShopPage from "./routes/shop/shop.component";
+import CheckOut from "./routes/checkout/checkout";
+import { Container } from "react-bootstrap";
 const App = () => {
-  const Shop = () => {
-    return <h2>I am the shop page</h2>;
-  };
-
   return (
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="/signin" element={<SignIn />} />
-      </Route>
-    </Routes>
+    <Container className="container-fluid">
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="shop" element={<ShopPage />} />
+          <Route path="sign-up" element={<SignUpForm />} />
+          <Route path="reset" element={<ResetFormEmailPassword />} />
+          <Route path="auth" element={<Authentication />} />
+          <Route path="checkout" element={<CheckOut />} />
+        </Route>
+      </Routes>
+    </Container>
   );
 };
 export default App;

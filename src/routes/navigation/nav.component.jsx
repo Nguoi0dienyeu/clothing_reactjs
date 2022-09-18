@@ -1,9 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 import { Fragment } from "react";
+import { CartConext } from "../../Context/cart.context";
+import CartIcon from "../../Component/Cart-Icon/cart-icon";
+import CartDropDown from "../../Component/cart-dropdown/cart-dropdown";
+
 import "./nav.styles.scss";
+import { useContext } from "react";
 const Navigation = () => {
-  const shoppingCart = "https://cdn-icons-png.flaticon.com/512/891/891462.png";
   const homePage = "https://cdn-icons-png.flaticon.com/512/6488/6488535.png";
+
+  const { isCartOpen } = useContext(CartConext);
   return (
     <Fragment>
       <div className="navigation-bar">
@@ -28,20 +34,17 @@ const Navigation = () => {
               </Link>
             </li>
             <li>
-              <Link className="nav-link" to="/signin">
-                sign in
+              <Link className="nav-link" to="/auth">
+                sign up
               </Link>
             </li>
+            <li></li>
             <li>
-              <div
-                className="shoping-cart"
-                style={{
-                  backgroundImage: `url(${shoppingCart})`,
-                }}
-              ></div>
+              <CartIcon />
             </li>
           </ul>
         </div>
+        {isCartOpen && <CartDropDown />}
       </div>
       <Outlet />
     </Fragment>

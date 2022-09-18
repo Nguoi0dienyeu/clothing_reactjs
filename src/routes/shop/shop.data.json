@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Áo phông",
+    "imgUrl": "https://images.asos-media.com/products/stradivarius-straight-leg-90s-jeans-with-rips-in-blue/200548990-1-blue?$n_480w$&wid=476&fit=constrain",
+    "price": 50,
+    "year": 2022,
+    "location": "China"
+  },
+  {
+    "id": 2,
+    "name": "Áo polo nam",
+    "imgUrl": "https://images.asos-media.com/products/polo-ralph-lauren-x-asos-exclusive-collab-rugby-polo-shirt-with-small-circle-logo-in-vertical-stripe/202035336-1-multi?$n_480w$&wid=476&fit=constrain",
+    "price": 59,
+    "year": 2021,
+    "location": "Viet Nam"
+  },
+  {
+    "id": 3,
+    "name": "Quần âu",
+    "imgUrl": "https://images.asos-media.com/products/polo-ralph-lauren-icon-logo-slim-fit-pique-polo-in-burgundy-marl/203491882-1-burgundymarl?$n_480w$&wid=476&fit=constrain",
+    "price": 115,
+    "year": 2019,
+    "location": "Viet nam"
+  },
+  {
+    "id": 4,
+    "name": "Đồ thể thao",
+    "imgUrl": "https://images.asos-media.com/products/adidas-running-m20-shorts-with-three-stripes-in-black/23520550-1-black?$n_480w$&wid=476&fit=constrain",
+    "price": 300,
+    "year": 2022,
+    "location": "Quảng châu"
+  },
+  {
+    "id": 5,
+    "name": "Áo phông",
+    "imgUrl": "https://images.asos-media.com/products/ted-baker-flercon-applique-floral-small-icon-bag-in-pink/202179093-1-duskypink?$n_480w$&wid=476&fit=constrain",
+    "price": 50,
+    "year": 2022,
+    "location": "China"
+  },
+  {
+    "id": 6,
+    "name": "Quần kaki",
+    "imgUrl": "https://images.asos-media.com/products/asos-design-90s-shoulder-bag-in-monogram-print-with-hardware-clip/21377903-1-monogramprint?$n_480w$&wid=476&fit=constrain",
+    "price": 112,
+    "year": 2022,
+    "location": "Viet Nam"
+  },
+  {
+    "id": 7,
+    "name": "Giầy",
+    "imgUrl": "https://images.asos-media.com/products/asos-design-fate-jelly-flat-sandals-with-buckles-in-off-white/201054825-1-offwhite?$n_480w$&wid=476&fit=constrain",
+    "price": 212,
+    "year": 2022,
+    "location": "China"
+  }
+]

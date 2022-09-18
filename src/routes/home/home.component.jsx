@@ -1,5 +1,5 @@
-import DirectoryComponent from "../../Directory/directory-component";
-import "../../Directory/directory-styles.scss";
+import DirectoryComponent from "../../Component/Directory/directory-component";
+import "../../Component/Directory/directory-styles.scss";
 import { Outlet } from "react-router-dom";
 const Home = () => {
   const categories = [
