@@ -29,77 +29,75 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-console.log("firebaseApp", firebaseApp);
+// const googleProvider = new GoogleAuthProvider();
 
-const googleProvider = new GoogleAuthProvider();
-
-// popup sign-in
-googleProvider.setCustomParameters({
-  prompt: "select_account",
-});
+// // popup sign-in
+// googleProvider.setCustomParameters({
+//   prompt: "select_account",
+// });
 
 export const auth = getAuth();
 
-export const signInWithGooglePopup = () =>
-  signInWithPopup(auth, googleProvider);
-export const signInWithGoogleRedirect = () =>
-  signInWithRedirect(auth, googleProvider);
-// create db firebase
+// export const signInWithGooglePopup = () =>
+//   signInWithPopup(auth, googleProvider);
+// export const signInWithGoogleRedirect = () =>
+//   signInWithRedirect(auth, googleProvider);
+// // create db firebase
 export const firebasedb = getFirestore();
 
-export const createUserDocumentFromAuth = async (
-  userAuth,
-  additinalInfomation = {}
-) => {
-  if (!userAuth) return;
-  const userDocRef = doc(firebasedb, "user", userAuth.uid);
+// export const createUserDocumentFromAuth = async (
+//   userAuth,
+//   additinalInfomation = {}
+// ) => {
+//   if (!userAuth) return;
+//   const userDocRef = doc(firebasedb, "user", userAuth.uid);
 
-  const userSnapShot = await getDoc(userDocRef);
+//   const userSnapShot = await getDoc(userDocRef);
 
-  if (!userSnapShot.exists()) {
-    const { displayName, email } = userAuth;
-    const createdAt = new Date();
+//   if (!userSnapShot.exists()) {
+//     const { displayName, email } = userAuth;
+//     const createdAt = new Date();
 
-    // try catch
-    try {
-      await setDoc(userDocRef, {
-        displayName,
-        email,
-        createdAt,
-        ...additinalInfomation,
-      });
-    } catch (error) {
-      console.log("error", error.message);
-    }
-  }
-  return userDocRef;
-};
+//     // try catch
+//     try {
+//       await setDoc(userDocRef, {
+//         displayName,
+//         email,
+//         createdAt,
+//         ...additinalInfomation,
+//       });
+//     } catch (error) {
+//       console.log("error", error.message);
+//     }
+//   }
+//   return userDocRef;
+// };
 
-export const createAuthUserWithEmailAndPassword = async (email, password) => {
-  if (!email || !password) return;
-  return await createUserWithEmailAndPassword(auth, email, password);
-};
-export const signInAuthUserWithEmailAndPassword = async (email, password) => {
-  // if (!email || !password) return;
-  // return await signInWithEmailAndPassword(auth, email, password);
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    console.log("error", error);
-    alert(error.message);
-  }
-};
+// export const createAuthUserWithEmailAndPassword = async (email, password) => {
+//   if (!email || !password) return;
+//   return await createUserWithEmailAndPassword(auth, email, password);
+// };
+// export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+//   // if (!email || !password) return;
+//   // return await signInWithEmailAndPassword(auth, email, password);
+//   try {
+//     await signInWithEmailAndPassword(auth, email, password);
+//   } catch (error) {
+//     console.log("error", error);
+//     alert(error.message);
+//   }
+// };
 
-export const sendPasswordReset = async (email) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-    alert("Password reset link to send email!");
-  } catch (error) {
-    console.error(error);
-    alert(error.message);
-  }
-};
+// export const sendPasswordReset = async (email) => {
+//   try {
+//     await sendPasswordResetEmail(auth, email);
+//     alert("Password reset link to send email!");
+//   } catch (error) {
+//     console.error(error);
+//     alert(error.message);
+//   }
+// };
 
-export const logout = () => {
-  signOut(auth);
-};
+// export const logout = () => {
+//   signOut(auth);
+// };

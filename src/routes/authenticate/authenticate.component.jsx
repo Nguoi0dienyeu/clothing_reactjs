@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from "react";
 import SignInForm from "../../Component/sign-in-form/sign-in-form.component";
 import {
   auth,
-  createUserDocumentFromAuth,
+  // createUserDocumentFromAuth,
 } from "../../utils/Firebase/firebase.utils";
 import "./login.styles.scss";
 
@@ -11,9 +11,9 @@ const Authentication = () => {
   useEffect(() => {
     const asyncFn = async () => {
       const respone = await getRedirectResult(auth);
-      if (respone) {
-        const userDocRef = createUserDocumentFromAuth(respone.user);
-      }
+      // if (respone) {
+      //   const userDocRef = createUserDocumentFromAuth(respone.user);
+      // }
     };
     asyncFn();
   }, []);

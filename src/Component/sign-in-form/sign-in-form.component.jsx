@@ -1,11 +1,11 @@
 import { Fragment, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../Form-Component/form-input.component";
-import {
-  createUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword,
-  signInWithGooglePopup,
-} from "../../utils/Firebase/firebase.utils";
+// import {
+//   createUserDocumentFromAuth,
+//   signInAuthUserWithEmailAndPassword,
+//   signInWithGooglePopup,
+// } from "../../utils/Firebase/firebase.utils";
 import "./sign-in-form.style.scss";
 import { UserContext } from "../../Context/user.context";
 
@@ -14,47 +14,46 @@ const SignInForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { setUserCurrent } = useContext(UserContext);
+  // const { setUserCurrent } = useContext(UserContext);
 
-  const handleSubmit = async (e) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    // try {
-    //   const { user } = await signInAuthUserWithEmailAndPassword(
-    //     email,
-    //     password
-    //   );
-    //   navigate("/home");
-    //   setUserCurrent(" e.target.value();", e.target.value);
-    //   console.log("user", user);
-    // } catch (err) {
-    //   setError(error.message);
-    // }
-    try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      setUserCurrent(user);
-      console.log("user", user);
-    } catch (err) {
-      setError();
-      console.log("err", error);
-    }
-  };
+  // const handleSubmit = async (e) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // try {
+  //   const { user } = await signInAuthUserWithEmailAndPassword(
+  //     email,
+  //     password
+  //   );
+  //   navigate("/home");
+  //   setUserCurrent(" e.target.value();", e.target.value);
+  //   console.log("user", user);
+  // } catch (err) {
+  //   setError(error.message);
+  // }
+  //   try {
+  //     const { user } = await signInAuthUserWithEmailAndPassword(
+  //       email,
+  //       password
+  //     );
+  //     console.log("user", user);
+  //   } catch (err) {
+  //     setError();
+  //     console.log("err", error);
+  //   }
+  // };
 
-  // đăng nhập bằng google
-  const signinWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
-  };
+  // // đăng nhập bằng google
+  // const signinWithGoogle = async () => {
+  //   const { user } = await signInWithGooglePopup();
+  //   await createUserDocumentFromAuth(user);
+  // };
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  // const handleChangeEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
+  // const handleChangePassword = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
   return (
     <Fragment>
@@ -65,13 +64,7 @@ const SignInForm = () => {
         </span>
         <form form id="submit-form-container"></form>
         <div className="div-form-container">
-          <FormInput
-            label={"Email"}
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChangeEmail}
-          />
+          <FormInput label={"Email"} type="email" name="email" value={email} />
         </div>
         <div className="div-form-container">
           <FormInput
@@ -79,14 +72,13 @@ const SignInForm = () => {
             type="password"
             name="password"
             value={password}
-            onChange={handleChangePassword}
           />
         </div>
         <div className="button-form-submit">
-          <button type="submit" className="btn-sign-up" onClick={handleSubmit}>
+          <button type="submit" className="btn-sign-up">
             <p>Sign in</p>
           </button>
-          <button onClick={signinWithGoogle}>
+          <button>
             <p>Google Sign In</p>
           </button>
         </div>
