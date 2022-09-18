@@ -1,12 +1,9 @@
 .form-container {
-  border: 1px solid darkgray;
-  margin-top: 40px;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
   .login-container {
-    margin: 20px 0 20px 0;
-    max-width: 40%;
+    width: 100%;
     button.btn-sign-in-google {
       line-height: 20px;
       border: navajowhite;

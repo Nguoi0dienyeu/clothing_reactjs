@@ -33,10 +33,9 @@ const Navigation = () => {
                 Contact
               </Link>
             </li>
-            <li className="nav-link">sign out</li>
             <li>
               <Link className="nav-link" to="/auth">
-                sign in
+                sign up
               </Link>
             </li>
             <li></li>
