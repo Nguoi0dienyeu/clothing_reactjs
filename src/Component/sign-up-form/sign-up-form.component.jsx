@@ -1,3 +1,4 @@
+import { getAuth } from "@firebase/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Fragment, useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
@@ -15,13 +16,13 @@ export default function SignUpForm() {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError("Password do not match!");
     }
-
     try {
       setError("");
       setLoading(true);
-      await signUp(emailRef.current.value, passwordRef.current.value);
-    } catch {
+      return await signUp(emailRef, passwordRef);
+    } catch (error) {
       setError("Failer Created an account");
+      console.log("run start", error);
     }
   }
 

@@ -1,16 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
+  createUserWithEmailAndPassword,
   getAuth,
   GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signOut,
 } from "firebase/auth";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,7 +24,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 // const googleProvider = new GoogleAuthProvider();
 
 // // popup sign-in
@@ -36,15 +32,18 @@ const firebaseApp = initializeApp(firebaseConfig);
 //   prompt: "select_account",
 // });
 
-export const auth = getAuth(firebaseApp);
+const auth = getAuth(app);
 
 // export const signInWithGooglePopup = () =>
 //   signInWithPopup(auth, googleProvider);
 // export const signInWithGoogleRedirect = () =>
 //   signInWithRedirect(auth, googleProvider);
 // // create db firebase
-export const firebasedb = getFirestore();
-
+const firebasedb = getFirestore();
+const provider = new GoogleAuthProvider();
+export { app, auth };
+export { provider };
+export default firebasedb;
 // export const createUserDocumentFromAuth = async (
 //   userAuth,
 //   additinalInfomation = {}
@@ -72,21 +71,20 @@ export const firebasedb = getFirestore();
 //   }
 //   return userDocRef;
 // };
-
-// export const createAuthUserWithEmailAndPassword = async (email, password) => {
-//   if (!email || !password) return;
-//   return await createUserWithEmailAndPassword(auth, email, password);
-// };
-// export const signInAuthUserWithEmailAndPassword = async (email, password) => {
-//   // if (!email || !password) return;
-//   // return await signInWithEmailAndPassword(auth, email, password);
-//   try {
-//     await signInWithEmailAndPassword(auth, email, password);
-//   } catch (error) {
-//     console.log("error", error);
-//     alert(error.message);
-//   }
-// };
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  // if (!email || !password) return;
+  // return await signInWithEmailAndPassword(auth, email, password);
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log("error", error);
+    alert(error.message);
+  }
+};
 
 // export const sendPasswordReset = async (email) => {
 //   try {
