@@ -7,22 +7,22 @@ export default function SignUpForm() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-  const { signUp } = useAuth();
+  const { signUp, currentUser } = useAuth();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-
   async function handleSubmit(e) {
     e.preventDefault();
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError("Password do not match!");
     }
+
     try {
+      setError("");
+      setLoading(true);
       await signUp(emailRef.current.value, passwordRef.current.value);
     } catch {
-      console.log("vao day ");
       setError("Failer Created an account");
     }
-    setLoading(false);
   }
 
   return (
@@ -32,6 +32,7 @@ export default function SignUpForm() {
           <h2>
             <p>Sign Up </p>
           </h2>
+          {currentUser && currentUser.email}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

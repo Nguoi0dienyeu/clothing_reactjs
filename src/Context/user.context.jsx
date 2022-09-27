@@ -8,22 +8,21 @@ export function useAuth() {
   return useContext(UserContext);
 }
 export const UserProvier = ({ children }) => {
-  const [userCurrent, setUserCurrent] = useState();
+  const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-
   function signUp(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
   }
 
   useEffect(() => {
-    const unsubcribe = auth.onAuthStateChanged((user) => {
-      setUserCurrent(user);
+    const unsubsciber = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
       setLoading(false);
     });
-    return unsubcribe;
+    return unsubsciber;
   }, []);
 
-  const value = { userCurrent, signUp };
+  const value = { currentUser, signUp };
   return (
     <UserContext.Provider value={value}>
       {!loading && children}
