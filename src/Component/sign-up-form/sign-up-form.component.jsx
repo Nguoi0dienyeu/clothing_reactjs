@@ -1,8 +1,12 @@
-import { getAuth } from "@firebase/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Fragment, useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
 import { useAuth } from "../../Context/user.context";
+import {
+  auth,
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/Firebase/firebase.utils";
 import "./sign-up-form.style.scss";
 export default function SignUpForm() {
   const emailRef = useRef();
@@ -19,7 +23,12 @@ export default function SignUpForm() {
     try {
       setError("");
       setLoading(true);
-      return await signUp(emailRef, passwordRef);
+      const { user } = createAuthUserWithEmailAndPassword(
+        emailRef,
+        passwordRef
+      );
+      await createUserDocumentFromAuth(user, { emailRef, passwordRef });
+      alert("Succes create an account");
     } catch (error) {
       setError("Failer Created an account");
       console.log("run start", error);
