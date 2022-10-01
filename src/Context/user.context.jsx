@@ -1,17 +1,18 @@
 import React, { createContext, useContext, useState } from "react";
 import { useEffect } from "react";
 import { auth } from "../utils/Firebase/firebase.utils";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
 
 const UserContext = createContext();
 
 export function useAuth() {
   return useContext(UserContext);
 }
-export const UserProvier = ({ children }) => {
+export function UserProvier({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-  function signUp(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  function signup(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
   useEffect(() => {
@@ -22,10 +23,10 @@ export const UserProvier = ({ children }) => {
     return unsubsciber;
   }, []);
 
-  const value = { currentUser, signUp };
+  const value = { currentUser, signup };
   return (
     <UserContext.Provider value={value}>
       {!loading && children}
     </UserContext.Provider>
   );
-};
+}

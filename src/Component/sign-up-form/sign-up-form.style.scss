@@ -1,17 +1,16 @@
-.card {
-  width: 30%;
-  margin: auto;
-  .card-body-container.card-body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    h2 {
-      text-align: center;
-    }
-    .button-submit {
-      padding-top: 20px;
-      button.btn.btn-primary {
-        width: 100%;
-        line-height: 30px;
-      }
-    }
+.vh-100 {
+  background-color: #eee;
+  .card .text-black {
+    border-radius: 25px;
+  }
+  button.btn.btn-primary.btn-lg {
+    width: 70%;
+  }
+  .form-check.d-flex.justify-content-center.mb-5 {
+    align-items: center;
+  }
+  .vh-100 .form-check.d-flex.justify-content-center .mb-5 {
+    align-items: center !important;
+    margin-bottom: 5px !important;
   }
 }
