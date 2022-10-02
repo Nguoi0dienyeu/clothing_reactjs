@@ -7,10 +7,27 @@
     width: 70%;
   }
   .form-check.d-flex.justify-content-center.mb-5 {
-    align-items: center;
-  }
-  .vh-100 .form-check.d-flex.justify-content-center .mb-5 {
     align-items: center !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 10px !important;
+  }
+  p.footer-link-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span a {
+      text-decoration: none;
+      padding-left: 5px;
+    }
+  }
+  .card.text-black {
+    margin-top: 20px;
+  }
+  .fade.alert.alert-danger.show {
+    margin-left: 15px;
+    line-height: 20px;
+  }
+  .fade.alert.alert-success.show {
+    margin-left: 15px;
+    line-height: 20px;
   }
 }

@@ -86,18 +86,6 @@ export default function SignUpForm() {
                           </div>
                         </div>
 
-                        <div class="form-check d-flex justify-content-center mb-5">
-                          <input
-                            class="form-check-input me-2"
-                            type="checkbox"
-                            value=""
-                            id="form2Example3c"
-                          />
-                          <label class="form-check-label" for="form2Example3">
-                            remember me
-                          </label>
-                        </div>
-
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="submit"
@@ -106,6 +94,14 @@ export default function SignUpForm() {
                           >
                             Register
                           </button>
+                        </div>
+                        <div className="footer">
+                          <p className="footer-link-login">
+                            Need to login?
+                            <span>
+                              <Link to="/sign-in">Log in</Link>
+                            </span>
+                          </p>
                         </div>
                       </Form>
                     </div>

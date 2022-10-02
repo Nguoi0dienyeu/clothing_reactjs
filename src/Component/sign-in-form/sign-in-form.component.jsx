@@ -1,99 +1,106 @@
-import { Fragment, useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import FormInput from "../Form-Component/form-input.component";
-// import {
-//   createUserDocumentFromAuth,
-//   signInAuthUserWithEmailAndPassword,
-//   signInWithGooglePopup,
-// } from "../../utils/Firebase/firebase.utils";
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { Fragment, useRef, useState } from "react";
+import { Alert, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../Context/user.context";
 import "./sign-in-form.style.scss";
-import { UserContext } from "../../Context/user.context";
+export default function SignInForm() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { login } = useAuth();
+  const [Success, setSuccess] = useState("");
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
 
-const SignInForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  // const { setUserCurrent } = useContext(UserContext);
-
-  // const handleSubmit = async (e) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // try {
-  //   const { user } = await signInAuthUserWithEmailAndPassword(
-  //     email,
-  //     password
-  //   );
-  //   navigate("/home");
-  //   setUserCurrent(" e.target.value();", e.target.value);
-  //   console.log("user", user);
-  // } catch (err) {
-  //   setError(error.message);
-  // }
-  //   try {
-  //     const { user } = await signInAuthUserWithEmailAndPassword(
-  //       email,
-  //       password
-  //     );
-  //     console.log("user", user);
-  //   } catch (err) {
-  //     setError();
-  //     console.log("err", error);
-  //   }
-  // };
-
-  // // đăng nhập bằng google
-  // const signinWithGoogle = async () => {
-  //   const { user } = await signInWithGooglePopup();
-  //   await createUserDocumentFromAuth(user);
-  // };
-
-  // const handleChangeEmail = (e) => {
-  //   setEmail(e.target.value);
-  // };
-
-  // const handleChangePassword = (e) => {
-  //   setPassword(e.target.value);
-  // };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      setError("");
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
+      setSuccess("Login Success");
+    } catch (error) {
+      setError("Log in Failer");
+    }
+    setLoading(false);
+  }
 
   return (
     <Fragment>
-      <div className="form-container-sign-up">
-        <span>
-          <h2>Already have an account</h2>
-          <p>Sign up with your email and password </p>
-        </span>
-        <form form id="submit-form-container"></form>
-        <div className="div-form-container">
-          <FormInput label={"Email"} type="email" name="email" value={email} />
+      <section class="vh-100">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                        Log In
+                      </p>
+                      {Success && <Alert variant="success">{Success}</Alert>}
+                      {error && <Alert variant="danger">{error}</Alert>}
+                      <Form class="mx-1 mx-md-4" onSubmit={handleSubmit}>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="email"
+                              id="form3Example3c"
+                              class="form-control"
+                              ref={emailRef}
+                              placeholder="Your Email"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="password"
+                              id="form3Example4c"
+                              class="form-control"
+                              ref={passwordRef}
+                              placeholder=" Password"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button
+                            type="submit"
+                            disabled={loading}
+                            class="btn btn-primary btn-lg"
+                          >
+                            Log In
+                          </button>
+                        </div>
+                        <div className="footer">
+                          <p className="footer-link-login">
+                            Already have an account?
+                            <span>
+                              <Link to="/sign-up">Sign Up</Link>
+                            </span>
+                          </p>
+                        </div>
+                      </Form>
+                    </div>
+                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                        class="img-fluid"
+                        alt="Sample image"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="div-form-container">
-          <FormInput
-            label={"Password"}
-            type="password"
-            name="password"
-            value={password}
-          />
-        </div>
-        <div className="button-form-submit">
-          <button type="submit" className="btn-sign-up">
-            <p>Sign in</p>
-          </button>
-          <button>
-            <p>Google Sign In</p>
-          </button>
-        </div>
-        <Link to="/reset" className="forgot password">
-          Forgot password
-        </Link>
-      </div>
-      <div className="form-container">
-        <div className="flex-sign-in-text-center">
-          <p>
-            Don't have an account? <Link to="/sign-up">Sign up</Link>
-          </p>
-        </div>
-      </div>
+      </section>
     </Fragment>
   );
-};
-export default SignInForm;
+}

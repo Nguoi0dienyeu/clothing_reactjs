@@ -41,8 +41,8 @@ const Navigation = () => {
                 </Link>
               </li>
               <li class="nav-item">
-                <Link className="nav-link" to="/auth">
-                  Sign up
+                <Link className="nav-link" to="/sign-up">
+                  Log In
                 </Link>
               </li>
             </ul>
@@ -59,13 +59,13 @@ const Navigation = () => {
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img
+                {/* <img
                   src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                   class="rounded-circle"
                   height="25"
                   alt="Black and White Portrait of a Man"
                   loading="lazy"
-                />
+                /> */}
               </a>
               <ul
                 class="dropdown-menu dropdown-menu-end"

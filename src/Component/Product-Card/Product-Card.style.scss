@@ -11,9 +11,12 @@
     .card-product {
       border: 1px solid gray;
       position: relative;
+      border-radius: 2%;
       img {
         padding: 10px;
         width: 100%;
+        border-top-left-radius: 5%;
+        border-top-right-radius: 5%;
       }
       .card-body {
         display: flex;
@@ -21,6 +24,9 @@
         align-items: center;
         padding-right: 18px;
         padding-left: 18px;
+        h5.card-title {
+          padding: 20px 0 20px 0;
+        }
       }
       button.button-submit {
         border: none;
@@ -31,10 +37,18 @@
         background-color: #1c1c1d;
         opacity: 70%;
         position: absolute;
-        bottom: 13px;
+        bottom: 53px;
+        z-index: 1000;
         p.button-submit {
           color: #fff;
         }
+      }
+    }
+    @mixin clearfix() {
+      &::after {
+        display: block;
+        clear: both;
+        content: "";
       }
     }
   }
