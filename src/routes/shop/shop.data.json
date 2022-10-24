@@ -54,5 +54,13 @@
     "price": 212,
     "year": 2022,
     "location": "China"
+  },
+  {
+    "id": 8,
+    "name": "Watch",
+    "imgUrl": "https://images.asos-media.com/products/asos-design-fate-jelly-flat-sandals-with-buckles-in-off-white/201054825-1-offwhite?$n_480w$&wid=476&fit=constrain",
+    "price": 333,
+    "year": 2022,
+    "location": "Korea"
   }
 ]

@@ -12,3 +12,24 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     }
   }
 }
+
+.container.footer-navigation {
+  min-width: 100%;
+  height: auto;
+  background: gray;
+  color: #fff;
+  .footer-text {
+    padding-top: 10px;
+    text-transform: uppercase;
+  }
+  .col-sm-4.two-columns span {
+    display: flex;
+    line-height: 33px;
+    p {
+      padding-left: 7px;
+    }
+  }
+  .row.flex-col-sm-3 {
+    padding-top: 20px;
+  }
+}

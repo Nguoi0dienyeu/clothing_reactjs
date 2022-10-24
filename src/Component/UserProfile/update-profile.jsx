@@ -2,26 +2,24 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Fragment, useRef, useState } from "react";
 import { Alert, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/user.context";
-import "./sign-in-form.style.scss";
-export default function SignInForm() {
+export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login, currentUser } = useAuth();
+  const confirmPassword = useRef();
+  const { login } = useAuth();
   const [success, setSuccess] = useState("");
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-  const naviagte_history = useNavigate();
 
-  async function handleSubmit(e) {
+  async function hadlerUpdate(e) {
     e.preventDefault();
     try {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
       setSuccess("Login Success");
-      if (currentUser) return naviagte_history("/");
     } catch (error) {
       setError("Log in Failer");
     }
@@ -39,11 +37,11 @@ export default function SignInForm() {
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                        Log In
+                        Update Profile
                       </p>
                       {success && <Alert variant="success">{success}</Alert>}
                       {error && <Alert variant="danger">{error}</Alert>}
-                      <Form class="mx-1 mx-md-4" onSubmit={handleSubmit}>
+                      <Form class="mx-1 mx-md-4" onSubmit={hadlerUpdate}>
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -69,6 +67,18 @@ export default function SignInForm() {
                             />
                           </div>
                         </div>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="password"
+                              id="form3Example4c"
+                              class="form-control"
+                              ref={confirmPassword}
+                              placeholder=" Do have same the password"
+                            />
+                          </div>
+                        </div>
 
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
@@ -76,7 +86,7 @@ export default function SignInForm() {
                             disabled={loading}
                             class="btn btn-primary btn-lg"
                           >
-                            Log In
+                            Update
                           </button>
                         </div>
                         <div className="footer">
@@ -91,13 +101,6 @@ export default function SignInForm() {
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <Link to="/forgot">Forgot password</Link>
                       </div>
-                    </div>
-                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                        class="img-fluid"
-                        alt="Sample image"
-                      />
                     </div>
                   </div>
                 </div>

@@ -10,7 +10,9 @@ const CartIcon = () => {
     <Fragment>
       <div className="cart-icon-container" onClick={toggleCartOpenIcon}>
         <ShoppingIcon className="shopping-icon" />
-        <span className="custom-count-icon">{count}</span>
+        <span className="position-absolute top-48 start-50 translate-middle badge rounded-pill bg-danger">
+          {count}
+        </span>
       </div>
     </Fragment>
   );

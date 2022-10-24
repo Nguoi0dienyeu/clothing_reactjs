@@ -11,23 +11,18 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div class="row row-cols-1">
-      <div class="col row-card-body">
-        <span class="visually-hidden">Loading...</span>
-        <div class="card-product">
-          <img src={imgUrl} alt={`${name}`} />
-          <div class="card-body">
-            <h5 class="card-title">{name}</h5>
-            <h5 class="card-title">{price}</h5>
-          </div>
-          <div className="clearfix">
-            <button type="submit" className="button-submit">
-              <p className="button-submit" onClick={addProducToCart}>
-                Add to cart
-              </p>
-            </button>
-          </div>
-        </div>
+    <div class="card-product">
+      <img src={imgUrl} alt={`${name}`} />
+      <div class="products-title">
+        <p class="name-title">{name}</p>
+        <p class="price-title">{price}</p>
+      </div>
+      <div className="products-button">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <p className="button-submit" onClick={addProducToCart}>
+            Add to cart
+          </p>
+        </button>
       </div>
     </div>
   );

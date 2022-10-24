@@ -5,10 +5,12 @@ import { Fragment } from "react";
 import { CartConext } from "../../Context/cart.context";
 import CartIcon from "../../Component/Cart-Icon/cart-icon";
 import CartDropDown from "../../Component/cart-dropdown/cart-dropdown";
-
 import "./nav.styles.scss";
+
 import { useContext } from "react";
+import { useAuth } from "../../Context/user.context";
 const Navigation = () => {
+  const { currentUser } = useAuth();
   const homePage = "https://cdn-icons-png.flaticon.com/512/6488/6488535.png";
 
   const { isCartOpen } = useContext(CartConext);
@@ -41,8 +43,8 @@ const Navigation = () => {
                 </Link>
               </li>
               <li class="nav-item">
-                <Link className="nav-link" to="/sign-up">
-                  Log In
+                <Link className="nav-link" to="/sign-in">
+                  Sign In
                 </Link>
               </li>
             </ul>
@@ -51,22 +53,7 @@ const Navigation = () => {
           {isCartOpen && <CartDropDown />}
           <div class="d-flex align-items-center">
             <div class="dropdown">
-              <a
-                class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuAvatar"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {/* <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                  class="rounded-circle"
-                  height="25"
-                  alt="Black and White Portrait of a Man"
-                  loading="lazy"
-                /> */}
-              </a>
+              <Link to={"/profile"}>{currentUser && currentUser.email}</Link>
               <ul
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdownMenuAvatar"
@@ -92,6 +79,48 @@ const Navigation = () => {
         </div>
       </nav>
       <Outlet />
+      {/* footer */}
+      <div className="container footer-navigation">
+        <div className="row flex-col-sm-3">
+          <div className="col-sm-4 fist-columns">
+            <Link to="/">
+              <div
+                className="container footer-navigation logo"
+                style={{
+                  backgroundImage: `url(${homePage})`,
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  width: 64,
+                  height: 64,
+                }}
+              ></div>
+            </Link>
+            <div className="footer-text">
+              <p>Clothing wear</p>
+            </div>
+          </div>
+          <div className="col-sm-4 two-columns">
+            <span>
+              Address: <p>NewZelande 2211-111-14441</p>
+            </span>
+            <span>
+              Call me: <p>0974280876</p>
+            </span>
+            <span>
+              Email: <p>NewZelande 2211-111-14441</p>
+            </span>
+          </div>
+          <div className="col-sm-4">
+            <label>Follow me</label>
+            <div className="socials-network">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </Fragment>
   );
 };
